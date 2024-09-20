@@ -8,7 +8,11 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Étape 3 : Copier le code source PHP dans le répertoire du serveur Apache
-COPY . /var/www/html/
+COPY /home/user/php-app/main/index.php /var/www/html/
+COPY /home/user/php-app/main/scripts /var/www/html/
+COPY /home/user/php-app/main/src /var/www/html/
+COPY /home/user/php-app/main/styles /var/www/html/
+
 
 # Étape 4 : Exposition du port 80 pour l'accès HTTP
 EXPOSE 80
